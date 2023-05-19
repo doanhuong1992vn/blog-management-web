@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/component/layout :: head"><title>#</title></head>
+<body>
+<nav th:replace="/component/layout :: navbar"></nav>
+<div class="container-fluid col-12">
+    <div class="row">
+        <div th:replace="/component/layout :: sidebar"></div>
+        <div class="card container-fluid col-10 mt-5 float-left">
+            <form th:action="@{/category/update}" th:object="${category}" method="post">
+                <div class="form-group col-12">
+                    <label>Name Of Category:
+                        <input th:field="*{name}" class="form-control w-100">
+                        <input th:field="*{id}" hidden="hidden">
+                    </label>
+                </div>
+                <div class="form-group col-12 d-inline-flex justify-content-around">
+                    <button class="btn btn-primary">Update</button>
+                    <a th:href="@{/category/delete/__${category.id}__}"
+                       class="btn btn-primary">Delete</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <footer th:replace="/component/layout :: footer"></footer>
+    </div>
+</div>
+<script th:replace="/component/layout :: script"></script>
+</body>
+</html>

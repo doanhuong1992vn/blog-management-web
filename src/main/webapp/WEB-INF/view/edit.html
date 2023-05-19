@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/component/layout :: head"><title>#</title></head>
+<body>
+<nav th:replace="/component/layout :: navbar"></nav>
+<div class="container-fluid col-12">
+    <div class="row">
+        <div th:replace="/component/layout :: sidebar"></div>
+        <div class="container-fluid col-10 mt-5 float-left">
+            <p th:if="${message}" th:text="${message}" class="h5 text-danger"></p>
+            <form th:action="@{/post/update}" th:object="${post}" method="post">
+                <div class="form-group">
+                    <label for="title" class="h5 text-black">Title</label>
+                    <input th:field="*{title}" required title="Tối đa 100 ký tự" th:pattern="'^(.{1,100})$'"
+                           class="form-control" id="title" placeholder="Enter title">
+                </div>
+                <div class="form-group">
+                    <label class="h5 text-black w-100">Category
+                        <select th:field="*{category}" class="form-select">
+                            <option th:value="*{category.id}" th:text="${post.category}" selected></option>
+                            <option th:each="cate : ${session.categories}" th:value="${cate.id}"
+                                    th:text="${cate.name}"></option>
+                        </select>
+                    </label>
+                </div>
+                <label for="basic-url" class="h5 text-black">Image URL</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">https://example.com/image.jpg</span>
+                    </div>
+                    <input th:field="*{image}" required title="Tối đa 1000 ký tự" th:pattern="'^(.{1,1000})$'"
+                           type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                </div>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text h5 text-black">Summary</span>
+                    </div>
+                    <textarea th:field="*{summary}" required th:pattern="'^(.{25,500})$'" title="Tối đa 500 ký tự"
+                              class="form-control" aria-label="With textarea" rows="10" style="height: 7rem"></textarea>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="content" class="h5 text-black">Content</label>
+                    <textarea th:field="*{content}" title="Tối đa 3000 ký tự"
+                              class="form-control" id="content" rows="10"></textarea>
+                </div>
+                <input hidden="hidden" th:field="*{postTime}" th:value="*{postTime}">
+                <input hidden="hidden" th:field="*{id}" th:value="*{id}">
+                <button type="submit" class="btn btn-primary">UPDATE</button>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <footer th:replace="/component/layout :: footer"></footer>
+    </div>
+</div>
+<div th:replace="/component/layout :: script"></div>
+</body>
+</html>
