@@ -26,7 +26,8 @@
         </ul>
         <form th:action="@{/post/search}" method="get" class="form-inline my-2 my-lg-0 mr-2">
             <input name="query" class="form-control mr-sm-2" type="search"
-                   placeholder="By title containing" aria-label="Search">
+                   title="Search posts by title containing"
+                   placeholder="Search posts" aria-label="Search" required>
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>

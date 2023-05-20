@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,6 +26,7 @@ public class Post {
     private String summary;
     @Column(name = "content", nullable = false, length = 3000)
     private String content;
+    @Column
     private LocalDateTime postTime;
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id")

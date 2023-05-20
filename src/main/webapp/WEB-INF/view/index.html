@@ -9,7 +9,8 @@
         <div class="container-fluid col-10 float-left">
             <p th:text="${postList.isEmpty()} ? 'You have not created any posts yet!' : 'All posts:'"
                class="h4 mt-3 ml-5"></p>
-            <div th:each="post : ${postList}" th:object="${post}" class="container-fluid col-10 mt-5">
+            <div th:fragment="card-loop" th:each="post : ${postList}" th:object="${post}"
+                 class="container-fluid col-10 mt-5">
                 <div class="card mb-3">
                     <div class="row no-gutters">
                         <div class="col-md-4">
@@ -42,7 +43,7 @@
     </div>
 </div>
 <script th:replace="/component/layout :: script"></script>
-<script>
+<script th:fragment="format-by-moment">
     const postTimeNodes = document.querySelectorAll(".post-time");
     for (let element of postTimeNodes) {
         element.innerHTML = moment(element.innerHTML, moment.ISO_8601)

@@ -12,7 +12,7 @@
                 <h5 th:text="*{title}" class="card-title">Card title</h5>
                 <p th:text="'Danh mục: ' + ${post.category}" class="card-text h6"></p>
                 <p th:text="*{postTime}" class="card-text post-time"></p>
-                <pre th:text="*{content}" class="card-text"></pre>
+                <pre th:text="*{content}" class="card-text --font-family-sans-serif"></pre>
                 <div class="d-inline-flex justify-content-around col-12">
                     <a th:href="@{/post/edit/__${post.id}__}" class="btn btn-primary">Edit</a>
                     <a th:href="@{/post/delete/__${post.id}__}" class="btn btn-primary">Delete</a>

@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
+@Table
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,6 +18,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private String name;
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private Collection<Post> posts;
